@@ -1,0 +1,140 @@
+{
+    "STATEWIDE CONTRACT": {
+        "vendors": [
+            "THE BOSTON CONSULTING GROUP INC",
+            "DELL MARKETING LP",
+            "SHI INTERNATIONAL CORP",
+            "INSIGHT PUBLIC SECTOR INC",
+            "CDW LLC"
+        ],
+        "spend": [
+            726115000.0,
+            439685853.47,
+            383818875.92,
+            350000000.0,
+            330000000.0
+        ],
+        "cumulative_percentage": [
+            14.11,
+            22.66,
+            30.12,
+            36.92,
+            43.34
+        ]
+    },
+    "AR DEPT OF HUMAN SERVICES": {
+        "vendors": [
+            "DELOITTE CONSULTING LLP",
+            "GAINWELL TECHNOLOGIES LLC",
+            "VERIDA INC",
+            "U OF A MEDICAL SCIENCES",
+            "OPTUM GOVERNMENT SOLUTIONS INC"
+        ],
+        "spend": [
+            632838996.03,
+            434988773.35,
+            238200385.68,
+            237837452.25,
+            171774519.31
+        ],
+        "cumulative_percentage": [
+            13.93,
+            23.51,
+            28.75,
+            33.99,
+            37.77
+        ]
+    },
+    "DEPARTMENT OF CORRECTION": {
+        "vendors": [
+            "NATIONAL FOOD GROUP",
+            "ROBBINS SALES COMPANY INC",
+            "SYSCO USA II LLC",
+            "SYSCO CORPORATION",
+            "WILLIAM R HILL & CO INC"
+        ],
+        "spend": [
+            477245272.0,
+            243041920.0,
+            122874720.0,
+            115825900.12,
+            100819584.0
+        ],
+        "cumulative_percentage": [
+            39.55,
+            59.69,
+            69.87,
+            79.47,
+            87.82
+        ]
+    },
+    "DEPT OF SHARED ADMIN SERVICES": {
+        "vendors": [
+            "HMO PARTNERS INC",
+            "USABLE MUTUAL INSURANCE COMPANY",
+            "UNITED HEALTHCARE",
+            "NAVITUS HEALTH SOLUTIONS LLC",
+            "CARAHSOFT TECHNOLOGY CORP"
+        ],
+        "spend": [
+            403964618.8,
+            168526000.0,
+            167854800.0,
+            33512800.0,
+            22464301.32
+        ],
+        "cumulative_percentage": [
+            46.1,
+            65.33,
+            84.48,
+            88.31,
+            90.87
+        ]
+    },
+    "AR TEACHER RETIREMENT SYSTEM": {
+        "vendors": [
+            "STATE STREET BANK & TRUST CO",
+            "WELLINGTON MANAGEMENT CO LLP",
+            "LAZARD ASSET MANAGEMENT LLC",
+            "T ROWE PRICE ASSOCIATES INC",
+            "KENNEDY CAPITAL MANAGEMENT INC"
+        ],
+        "spend": [
+            89000000.0,
+            79400000.0,
+            72000000.0,
+            70200000.0,
+            54800000.0
+        ],
+        "cumulative_percentage": [
+            14.82,
+            28.04,
+            40.03,
+            51.72,
+            60.85
+        ]
+    },
+    "DFA - REVENUE SERVICES DIV": {
+        "vendors": [
+            "INTERNATIONAL SECURITY PRODUCTS",
+            "MEYERCORD REVENUE INC",
+            "IDEMIA IDENTITY & SECURITY USA LLC",
+            "WALDALE MANUFACTURING LIMITED",
+            "INTELLECTUAL TECHNOLOGY INC"
+        ],
+        "spend": [
+            280076645.4,
+            78578668.03,
+            21808353.32,
+            10184246.75,
+            8651582.91
+        ],
+        "cumulative_percentage": [
+            60.56,
+            77.55,
+            82.27,
+            84.47,
+            86.34
+        ]
+    }
+}

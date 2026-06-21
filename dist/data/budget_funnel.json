@@ -1,0 +1,21 @@
+{
+    "gross_allocated": 17363459748.329998,
+    "stages": [
+        {
+            "value": 17363459748.329998,
+            "name": "Approved Contract Budget"
+        },
+        {
+            "value": 26240100927.94,
+            "name": "Purchase Orders Issued"
+        },
+        {
+            "value": 24472784869.57,
+            "name": "Liquid Capital Cashed Out"
+        },
+        {
+            "value": 19623733633.010002,
+            "name": "Unplanned Fiscal Overruns"
+        }
+    ]
+}
