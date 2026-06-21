@@ -1,35 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-slate-950 text-slate-100">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARKANSAS // Fiscal Ledger Intelligence</title>
+    <title>Arkansas Fiscal Ledger Intelligence</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body class="h-full font-sans antialiased selection:bg-cyan-500 selection:text-slate-900">
 
     <div class="min-h-full flex flex-col">
         <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-40 px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="h-8 w-2 bg-cyan-500 rounded-full animate-pulse"></div>
-                <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
-                    ARKANSAS <span class="text-xs font-mono font-semibold uppercase px-2 py-0.5 ml-2 border border-cyan-500/30 text-cyan-400 bg-cyan-950/30 rounded">Fiscal-Core v2026</span>
-                </h1>
+            <div class="flex items-center space-x-6">
+                <div class="flex items-center space-x-3">
+                    <div class="h-8 w-2 bg-cyan-500 rounded-full animate-pulse"></div>
+                    <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+                        ARKANSAS FISCAL LEDGER
+                    </h1>
+                </div>
+                <nav class="flex items-center space-x-4 text-xs font-mono text-slate-400 border-l border-slate-800 pl-6">
+                    <a href="./index.html" class="hover:text-cyan-400 text-cyan-400 font-semibold transition">Interactive Dashboard</a>
+                    <span class="text-slate-700">•</span>
+                    <a href="./reports.html" class="hover:text-cyan-400 transition">Report On The Data</a>
+                    <span class="text-slate-700">•</span>
+                    <a href="https://github.com/NicholasTrimble/Arkansas-Fiscal-Ledger" target="_blank" class="hover:text-cyan-400 transition">GitHub</a>
+                </nav>
             </div>
             <div class="flex items-center space-x-4 text-xs font-mono text-slate-400">
-                <span>LEDGER STATE: <span class="text-emerald-400 font-bold">LIVE METRICS</span></span>
-                <span class="text-slate-600">|</span>
                 <span>DATA SOURCE: TRANSPARENCY.ARKANSAS.GOV</span>
             </div>
         </header>
 
         <main class="flex-1 p-6 max-w-[1600px] w-full mx-auto grid grid-cols-1 xl:grid-cols-4 gap-6">
-            
             <section class="xl:col-span-1 bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col justify-between space-y-6 shadow-2xl">
                 <div>
                     <h2 class="text-lg font-semibold tracking-wide text-white flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4v2m0-6V4"></path></svg>
+                        <svg class="w-5 h-5 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4v2m0-6V4"></path>
+                        </svg>
                         What-If Policy Simulator
                     </h2>
                     <p class="text-xs text-slate-400 mt-1">Adjust legislative parameters below to simulate automated real-time state budget optimization models.</p>
@@ -74,8 +83,7 @@
                 <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-xl md:col-span-3">
                     <h3 class="text-sm font-semibold tracking-wider text-slate-400 uppercase mb-2">High-Risk Agency Deep-Dives</h3>
                     <p class="text-xs text-slate-400 mb-4">Select an active state agency node to view the absolute 80/20 vendor monopoly concentration ratios calculated from raw ledger facts.</p>
-                    <div id="agency-buttons" class="flex flex-wrap gap-3">
-                        </div>
+                    <div id="agency-buttons" class="flex flex-wrap gap-3"></div>
                 </div>
             </section>
         </main>
@@ -90,177 +98,6 @@
         </div>
     </div>
 
-    <script>
-        // Core State Containers
-        let baseFunnel = {};
-        let paretoData = {};
-        let miniLedger = [];
-
-        // Global Chart Bindings
-        let funnelChart, paretoChart;
-
-        document.addEventListener("DOMContentLoaded", async () => {
-            initECharts();
-            await fetchStaticDataLake();
-            renderBaseDashboard();
-            populateAgencyControls();
-            initSimulationEngine();
-        });
-
-        function initECharts() {
-            funnelChart = echarts.init(document.getElementById('funnel-chart'), 'dark');
-            paretoChart = echarts.init(document.getElementById('pareto-chart'), 'dark');
-            
-            window.addEventListener('resize', () => {
-                funnelChart.resize();
-                paretoChart.resize();
-            });
-        }
-
-        async function fetchStaticDataLake() {
-            try {
-                // Fetch pre-computed payloads asynchronously from the generated Jamstack folder tree
-                const [funnelRes, paretoRes, ledgerRes] = await Promise.all([
-                    fetch('./data/budget_funnel.json').then(r => r.json()),
-                    fetch('./data/agency_pareto.json').then(r => r.json()),
-                    fetch('./data/mini_ledger.json').then(r => r.json())
-                ]);
-
-                baseFunnel = funnelRes;
-                paretoData = paretoRes;
-                miniLedger = ledgerRes;
-            } catch (err) {
-                console.error("Pipeline JSON target acquisition error. Verify script outputs match paths.", err);
-            }
-        }
-
-        function renderBaseDashboard() {
-            renderFunnel(baseFunnel.stages);
-            // Default initial text state for dynamic metrics
-            document.getElementById('metric-liability').innerText = `$${baseFunnel.stages[1].value.toLocaleString(undefined, {maximumFractionDigits: 0})}`;
-        }
-
-        function renderFunnel(stagesData) {
-            const option = {
-                backgroundColor: 'transparent',
-                tooltip: { trigger: 'item', formatter: "{b}: ${c}" },
-                series: [{
-                    name: 'Fiscal Flow Limit',
-                    type: 'funnel',
-                    left: '10%', right: '10%', top: '5%', bottom: '5%',
-                    width: '80%', sort: 'descending', gap: 6,
-                    label: { show: true, position: 'inside', fontStyle: 'monospace', formatter: '{b}\n${c}' },
-                    itemStyle: { borderColor: '#0f172a', borderWidth: 2 },
-                    colors: ['#06b6d4', '#0ea5e9', '#3b82f6', '#ef4444'],
-                    data: stagesData
-                }]
-            };
-            funnelChart.setOption(option);
-        }
-
-        // --- What-If Budget Recalculation Simulation Engine ---
-        function initSimulationEngine() {
-            const sliderReduction = document.getElementById('slider-reduction');
-            const sliderOverrun = document.getElementById('slider-overrun');
-
-            const computeSimulatedYield = () => {
-                const costCutFactor = parseFloat(sliderReduction.value) / 100;
-                const overrunCapFactor = parseFloat(sliderOverrun.value) / 100;
-
-                document.getElementById('reduction-val').innerText = `${sliderReduction.value}% Cut`;
-                document.getElementById('overrun-val').innerText = `${sliderOverrun.value}% Capped`;
-
-                let totalSaved = 0;
-                let simulatedLiability = 0;
-
-                // Stream rows through real-time adjustment calculations
-                miniLedger.forEach(row => {
-                    let contractVal = row.ContractValue;
-                    let poOrdered = row.POOrdered;
-                    let initialVariance = poOrdered - contractVal;
-
-                    let adjustedContract = contractVal * (1 - costCutFactor);
-                    let adjustedPO = poOrdered;
-
-                    if (initialVariance > 0 && overrunCapFactor > 0) {
-                        // Apply simulated ceiling to the calculated contract overruns
-                        adjustedPO = contractVal + (initialVariance * (1 - overrunCapFactor));
-                    }
-
-                    let initialCost = poOrdered;
-                    let adjustedCost = adjustedPO;
-                    
-                    totalSaved += Math.max(0, initialCost - adjustedCost);
-                    simulatedLiability += adjustedCost;
-                });
-
-                // Smoothly update metrics callouts on-screen
-                document.getElementById('metric-recovery').innerText = `$${totalSaved.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-                document.getElementById('metric-liability').innerText = `$${simulatedLiability.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-
-                // Smoothly update visual state of canvas funnel components
-                const runtimeStages = [
-                    { value: baseFunnel.stages[0].value * (1 - costCutFactor), name: "Approved Contract Budget" },
-                    { value: baseFunnel.stages[1].value - totalSaved, name: "Purchase Orders Issued" },
-                    { value: baseFunnel.stages[2].value, name: "Liquid Capital Cashed Out" },
-                    { value: baseFunnel.stages[3].value * (1 - overrunCapFactor), name: "Unplanned Fiscal Overruns" }
-                ];
-                renderFunnel(runtimeStages);
-            };
-
-            sliderReduction.addEventListener('input', computeSimulatedYield);
-            sliderOverrun.addEventListener('input', computeSimulatedYield);
-        }
-
-        // --- Agency Drill-Down Control Injector & Pareto Logic ---
-        function populateAgencyControls() {
-            const container = document.getElementById('agency-buttons');
-            Object.keys(paretoData).forEach(agencyName => {
-                const btn = document.createElement('button');
-                btn.className = "px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg text-xs font-mono font-medium tracking-wide transition duration-150 text-slate-200 cursor-pointer active:scale-95";
-                btn.innerText = agencyName;
-                btn.onclick = () => openParetoModal(agencyName);
-                container.appendChild(btn);
-            });
-        }
-
-        function openParetoModal(agencyName) {
-            const node = paretoData[agencyName];
-            document.getElementById('modal-title').innerText = `Pareto Concentration: ${agencyName}`;
-            document.getElementById('pareto-modal').classList.remove('hidden');
-
-            // Format data labels down to shortened string segments for responsive clean axis mapping
-            const truncatedVendors = node.vendors.map(v => v.length > 20 ? v.substring(0, 18) + '...' : v);
-
-            const option = {
-                backgroundColor: 'transparent',
-                tooltip: { trigger: 'axis', axisPointer: { type: 'cross' } },
-                grid: {
-                        left: '15%',
-                        right: '12%',
-                        bottom: '18%',
-                        top: '12%'
-                    },
-                xAxis: [{ type: 'category', data: truncatedVendors, axisLabel: { interval: 0, rotate: 15, fontSize: 10 } }],
-                yAxis: [
-                    { type: 'value', name: 'Approved Cap ($)', axisLabel: { formatter: '${value}' } },
-                    { type: 'value', name: 'Percentage (%)', min: 0, max: 100, axisLabel: { formatter: '{value}%' } }
-                ],
-                series: [
-                    { name: 'Total Allocation Limit', type: 'bar', barWidth: '40%', data: node.spend, itemStyle: { color: '#06b6d4', borderRadius: [4, 4, 0, 0] } },
-                    { name: 'Cumulative Baseline Share', type: 'line', yAxisIndex: 1, data: node.cumulative_percentage, itemStyle: { color: '#ef4444' }, lineStyle: { width: 3 } }
-                ]
-            };
-
-            setTimeout(() => {
-                paretoChart.resize();
-                paretoChart.setOption(option);
-            }, 50);
-        }
-
-        function closeModal() {
-            document.getElementById('pareto-modal').classList.add('hidden');
-        }
-    </script>
+    <script src="./main.js"></script>
 </body>
 </html>

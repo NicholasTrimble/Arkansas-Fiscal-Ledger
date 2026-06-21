@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports for Arkansas Fiscal Ledger</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="h-full font-sans antialiased selection:bg-cyan-500 selection:text-slate-900 bg-slate-950">
+
+    <div class="w-full flex flex-col">
+        <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-40 px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <div class="flex items-center space-x-3">
+                    <div class="h-8 w-2 bg-cyan-500 rounded-full animate-pulse"></div>
+                    <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+                        ARKANSAS FISCAL LEDGER
+                    </h1>
+                </div>
+                <nav class="flex items-center space-x-4 text-xs font-mono text-slate-400 border-l border-slate-800 pl-6">
+                    <a href="./index.html" class="hover:text-cyan-400 transition">Interactive Simulator</a>
+                    <span class="text-slate-700">•</span>
+                    <a href="./reports.html" class="hover:text-cyan-400 text-cyan-400 font-semibold transition">Report On The Data</a>
+                    <span class="text-slate-700">•</span>
+                    <a href="https://github.com/NicholasTrimble/Arkansas-Fiscal-Ledger" target="_blank" class="hover:text-cyan-400 transition">GitHub</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="flex-1 p-6 max-w-5xl w-full mx-auto space-y-8 my-6">
+            
+            <section class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-2xl flex flex-col space-y-4">
+                <h3 class="text-xs font-mono font-bold tracking-wider text-cyan-400 uppercase">Power BI Core Corporate Reporting System</h3>
+                <div class="w-full aspect-[16/9] bg-slate-950 rounded-lg border border-slate-800/60 overflow-hidden relative flex items-center justify-center">
+                    <img src="./images/background.png" alt="Power BI Dashboard Canvas Backdrop Layout" class="w-full h-full object-contain block">
+                </div>
+            </section>
+
+            <section class="bg-slate-900 border border-slate-800 rounded-xl p-8 shadow-2xl space-y-6 leading-relaxed text-slate-300">
+                <header class="border-b border-slate-800 pb-4">
+                    <h2 class="text-2xl font-bold tracking-tight text-white">Fiscal Procurement Analysis Report</h2>
+                    <p class="text-xs text-slate-400 mt-1">An Assessment of Structural Variance and Vendor Concentration profiles in State Procurement Systems</p>
+                </header>
+
+                <article class="space-y-6 text-sm">
+                    <h3 class="text-base font-semibold text-white tracking-wide">Summary</h3>
+                    <p>This study evaluates the statewide spending habits of Arkansas public sectors for the current fiscal year. By matching master contracts with individual purchase transaction logs, we are able to see exactly where taxpayer funding is utilized and where program costs have shifted over time. The goal of this review is to provide clear insight into state government operations without burying the findings in complex code or technical jargon.</p>
+
+                    <h3 class="text-base font-semibold text-white tracking-wide">The Macro View of Statewide Spending</h3>
+                    <p>When a public sector project is first launched, the state legislature approves a maximum funding limit for the contract. This represents the official baseline budget. However, as projects progress, agencies issue purchase orders to actually allocate and spend that capital. To evaluate how well agencies stick to these plans, our reporting platform uses a metric called budget overage variance. This calculation measures the specific dollar amount that actual ordered funds diverge from the initial maximum caps.</p>
+                    <p>When we look at the entire state ledger, the data reveals a total budget overage variance of negative five billion two hundred thirty seven million nine hundred sixty five thousand two hundred seventy two dollars and fifteen cents. Because this is a negative number, it proves that the state successfully kept active spending far below the maximum allowable funding ceilings. Operating more than five billion dollars under the approved baseline shows a highly conservative approach to releasing purchase orders compared to the absolute limits set by initial contracts.</p>
+
+                    <h3 class="text-base font-semibold text-white tracking-wide">Agency Deep Dives and Vendor Concentration</h3>
+                    <p>While the overall state operates safely under its budget caps, funding remains highly concentrated among a small group of specialized vendors. To understand where the largest pools of money go, we isolated the state departments with the heaviest transaction volumes.</p>
+                    <p>The Department of Human Services commands some of the most massive technology and administrative agreements on the ledger. They rely on external corporations to manage complex data processing and software systems. For example, Gainwell Technologies holds a single data processing contract valued at over four hundred thirty four million dollars. Optum Government Solutions also manages multiple contracts in this space totaling over one hundred seventy million dollars.</p>
+                    <p>Within the Department of Correction, spending is heavily focused on essential logistics like staple groceries and frozen foods to supply the prison system. Two primary vendors dominate this space. Robbins Sales Company holds a contract valued at over two hundred thirty seven million dollars, and National Food Group holds a separate agreement for over one hundred eighty seven million dollars. Centralizing these massive supply lines creates purchasing efficiency but leaves the state heavily reliant on just two food distributors.</p>
+                    <p>We also see unique partnerships between different public entities. The University of Arkansas for Medical Sciences appears constantly across the ledger as a top tier service provider for the Department of Human Services, the Department of Health, and the Department of Veterans Affairs. They provide professional medical services, therapy, and administrative support, acting as a central healthcare safety net for various state operations.</p>
+
+                    <h3 class="text-base font-semibold text-white tracking-wide">Strategic Recommendations</h3>
+                    <p>To maintain this strong fiscal position, the platform utilizes a predictive simulation model. By adjusting target parameters, we can see how modest policy updates yield significant taxpayer protection.</p>
+                    <p>While the current budget overage variance shows a safe five billion dollar buffer, enforcing a strict ceiling on individual vendor overruns ensures that no single contract can unexpectedly spike and erase those savings. Continuing to monitor the spending velocity of top tier accounts like Gainwell Technologies and Robbins Sales Company will balance vital public service delivery with aggressive fiscal accountability.</p>
+                </article>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
